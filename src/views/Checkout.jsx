@@ -14,17 +14,17 @@ export default function Checkout({ selectedQuote, queryData, setActiveView }) {
   const [currentStep, setCurrentStep] = useState(1);
 
   // Step 1: Customer Info Inputs
-  const [mobileNumber, setMobileNumber] = useState('0549204928');
-  const [emailAddress, setEmailAddress] = useState('mohand@example.com');
-  const [ibanNumber, setIbanNumber] = useState('SA1280000000492049281920');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const [ibanNumber, setIbanNumber] = useState('');
 
   // Step 2: Payment Inputs
   const [paymentMethod, setPaymentMethod] = useState('mada'); // 'mada' | 'sadad' | 'card'
   const [sadadCode, setSadadCode] = useState('');
-  const [cardNumber, setCardNumber] = useState('4574 8920 4920 1928');
-  const [cardName, setCardName] = useState('Mohand Al-Harbi');
-  const [cardExpiry, setCardExpiry] = useState('12/29');
-  const [cardCvv, setCardCvv] = useState('123');
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardName, setCardName] = useState('');
+  const [cardExpiry, setCardExpiry] = useState('');
+  const [cardCvv, setCardCvv] = useState('');
 
   // Verification & Loader States
   const [showOtpModal, setShowOtpModal] = useState(false);

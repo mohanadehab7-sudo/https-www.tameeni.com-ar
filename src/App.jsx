@@ -67,6 +67,7 @@ function AppContent() {
             setQueryData={setQueryData} 
             setActiveView={setActiveView} 
             setIsPlusDrawerOpen={setIsPlusDrawerOpen}
+            onStartNowClick={() => setIsLoginModalOpen(true)}
           />
         );
     }
@@ -180,7 +181,7 @@ function AppContent() {
             aria-expanded="false" 
             aria-controls="radix-_r_3_" 
             data-state="closed"
-            onClick={() => alert(lang === 'ar' ? 'البحث المعمم محاكي حالياً.' : 'Global search is simulated.')}
+            onClick={(e) => e.preventDefault()}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-search size-5 text-slate-600">
               <circle cx="11" cy="11" r="8"></circle>
@@ -336,7 +337,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'القسم الطبي محاكى حالياً.' : 'Medical Insurance is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <div aria-label="الصحي" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -363,7 +364,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'قسم الأخطاء الطبية محاكى حالياً.' : 'Medical Malpractice is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <a href="/ar/mmp" onClick={(e) => e.preventDefault()} aria-label="الأخطاء الطبية" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -387,7 +388,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'قسم العمالة المنزلية محاكى حالياً.' : 'Domestic Helpers is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <a href="/ar/domestic-helper" onClick={(e) => e.preventDefault()} aria-label="العمالة المنزلية" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -411,7 +412,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'قسم تأمين السفر محاكى حالياً.' : 'Travel Insurance is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <a href="/ar/travel" onClick={(e) => e.preventDefault()} aria-label="السفر" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -435,7 +436,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'قسم أسطول السيارات محاكى حالياً.' : 'Car Fleet tab is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <a href="/ar/fleet" onClick={(e) => e.preventDefault()} aria-label="أسطول السيارات" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -456,7 +457,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'قسم الحماية والادخار محاكى حالياً.' : 'Protection and Savings is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <a href="/ar/ps" onClick={(e) => e.preventDefault()} aria-label="الحماية والادخار" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -475,7 +476,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'قسم نقل البضائع محاكى حالياً.' : 'Marine cargo transport is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <a href="/ar/marine" onClick={(e) => e.preventDefault()} aria-label="نقل البضائع" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -493,7 +494,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'قسم تأمين المنزل محاكى حالياً.' : 'Home Insurance is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <a href="/ar/home" onClick={(e) => e.preventDefault()} aria-label="المنزل" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -517,7 +518,7 @@ function AppContent() {
           <div>
             <li 
               className="transition-all font-bold py-4 px-2 md:font-semibold text-t3 cursor-pointer text-gray-700 md:border-b-transparent hover:text-blue-600"
-              onClick={() => alert(lang === 'ar' ? 'منصة تريزا للسيارات الممولة محاكاة حالياً.' : 'Teresa platform is simulated.')}
+              onClick={(e) => e.preventDefault()}
             >
               <div aria-label="منصة تريزا للسيارات الممولة" className="flex items-center justify-center gap-2">
                 <span aria-hidden="true">
@@ -637,7 +638,7 @@ function AppContent() {
               </a>
               <a 
                 href="#health" 
-                onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); alert('Health insurance is simulated.'); }}
+                onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); }}
                 className="text-base text-slate-800 font-extrabold hover:text-blue-500 flex items-center gap-3"
               >
                 <Heart size={18} />
@@ -645,7 +646,7 @@ function AppContent() {
               </a>
               <a 
                 href="#contact" 
-                onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); alert('Whatsapp contact care: 800 124 8888'); }}
+                onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); }}
                 className="text-base text-slate-800 font-extrabold hover:text-blue-500 flex items-center gap-3"
               >
                 <Phone size={18} />

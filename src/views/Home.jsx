@@ -6,7 +6,7 @@ import {
   Search, X, FileSpreadsheet, ArrowLeft, ArrowRight, Check 
 } from 'lucide-react';
 
-export default function Home({ setQueryData, setActiveView, setIsPlusDrawerOpen }) {
+export default function Home({ setQueryData, setActiveView, setIsPlusDrawerOpen, onStartNowClick }) {
   const { t, lang, isRTL } = useLanguage();
   const productSliderRef = useRef(null);
 
@@ -17,8 +17,8 @@ export default function Home({ setQueryData, setActiveView, setIsPlusDrawerOpen 
 
   // Input states
   const [searchMode, setSearchMode] = useState('serial'); // 'serial' | 'customs'
-  const [serialNumber, setSerialNumber] = useState('843940294'); // default for quick demo
-  const [nationalId, setNationalId] = useState('1094039483'); // default for quick demo
+  const [serialNumber, setSerialNumber] = useState('');
+  const [nationalId, setNationalId] = useState('');
 
   const scrollProducts = (direction) => {
     if (productSliderRef.current) {
@@ -61,7 +61,7 @@ export default function Home({ setQueryData, setActiveView, setIsPlusDrawerOpen 
       code += Math.floor(Math.random() * 10).toString();
     }
     setCaptchaCode(code);
-    setCaptchaInput(code); // pre-populate for demo ease
+    setCaptchaInput('');
   };
 
   useEffect(() => {
@@ -240,7 +240,9 @@ export default function Home({ setQueryData, setActiveView, setIsPlusDrawerOpen 
                 href="/motorapp"
                 onClick={(e) => {
                   e.preventDefault();
-                  setActiveView('motorapp');
+                  if (onStartNowClick) {
+                    onStartNowClick();
+                  }
                 }}
               >
                 ابدأ الآن
