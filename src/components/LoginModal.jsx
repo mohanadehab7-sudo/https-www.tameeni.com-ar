@@ -5,14 +5,27 @@ import { X } from 'lucide-react';
 function OtpInput({ value, onChange, refs, hasError }) {
   const handleChange = (idx, raw) => {
     if (!/^\d*$/.test(raw)) return;
+    const digit = raw.slice(-1);
     const next = [...value];
-    next[idx] = raw.slice(-1);
+    next[idx] = digit;
     onChange(next);
-    if (raw && idx < 3) refs[idx + 1].current?.focus();
+    if (digit && idx < 3) {
+      setTimeout(() => refs[idx + 1].current?.focus(), 10);
+    }
   };
   const handleKeyDown = (idx, e) => {
-    if (e.key === 'Backspace' && !value[idx] && idx > 0)
-      refs[idx - 1].current?.focus();
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      const next = [...value];
+      if (value[idx]) {
+        next[idx] = '';
+        onChange(next);
+      } else if (idx > 0) {
+        next[idx - 1] = '';
+        onChange(next);
+        refs[idx - 1].current?.focus();
+      }
+    }
   };
   const handlePaste = (e) => {
     e.preventDefault();

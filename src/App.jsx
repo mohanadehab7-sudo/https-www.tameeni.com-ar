@@ -26,6 +26,7 @@ function AppContent() {
   const [isPlusDrawerOpen, setIsPlusDrawerOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null); // { id, mobile }
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [copiedCode, setCopiedCode] = useState(null);
 
   const handleCopyCode = (code) => {
@@ -225,17 +226,41 @@ function AppContent() {
             <div data-orientation="vertical" role="none" className="shrink-0 w-[1px] hidden md:block h-3 bg-slate-300"></div>
             {loggedInUser ? (
               /* ── Logged-in user button ── */
-              <button
-                className="cursor-pointer flex items-center gap-2 py-1.5 px-3 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors"
-                onClick={() => setIsLoginModalOpen(true)}
-              >
-                <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold shrink-0">
-                  {loggedInUser.mobile.slice(-2)}
-                </div>
-                <span className="text-xs font-semibold text-slate-700 hidden md:block">
-                  {lang === 'ar' ? 'حسابي' : 'My Account'}
-                </span>
-              </button>
+              <div className="relative">
+                <button
+                  className="cursor-pointer flex items-center gap-2 py-1.5 px-3 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors"
+                  onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                >
+                  <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    {loggedInUser.mobile ? loggedInUser.mobile.slice(-2) : 'U'}
+                  </div>
+                  <span className="text-xs font-semibold text-slate-700 hidden md:block">
+                    {lang === 'ar' ? 'هلا' : 'Hala'}
+                  </span>
+                </button>
+                {isProfileMenuOpen && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white border border-slate-100 rounded-lg shadow-lg py-1 z-50">
+                    <button
+                      className="w-full text-start px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 transition-colors"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        alert(lang === 'ar' ? 'عرض وثائقي التأمينية...' : 'Showing my policies...');
+                      }}
+                    >
+                      {lang === 'ar' ? 'وثائقي' : 'My Policies'}
+                    </button>
+                    <button
+                      className="w-full text-start px-4 py-2 text-xs text-red-600 hover:bg-red-50 transition-colors border-t border-slate-100"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        setLoggedInUser(null);
+                      }}
+                    >
+                      {lang === 'ar' ? 'تسجيل الخروج' : 'Logout'}
+                    </button>
+                  </div>
+                )}
+              </div>
             ) : (
               /* ── Login button ── */
               <button 
