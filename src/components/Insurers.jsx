@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Tameeni Official Insurers Logos - Deployed via Git Bash
 // Tawuniya Logo (Official PNG)
 export const TawuniyaLogo = ({ size = 48 }) => (
   <img 
